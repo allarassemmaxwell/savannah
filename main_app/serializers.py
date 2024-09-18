@@ -43,5 +43,3 @@ class OrderSerializer(serializers.ModelSerializer):
             'slug'
         ]
         read_only_fields = ['id', 'timestamp', 'slug']  # These fields cannot be modified directly
-
-

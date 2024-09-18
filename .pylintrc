@@ -1,0 +1,11 @@
+[MASTER]
+load-plugins=pylint_django
+
+[django]
+# Set this to the path to your Django settings module
+django-settings-module=backend.settings
+
+[MESSAGES CONTROL]
+disable=
+    C0415,  # Import outside toplevel
+    W0611,  # Unused import
