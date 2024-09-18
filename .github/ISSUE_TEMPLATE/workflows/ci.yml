@@ -1,0 +1,78 @@
+name: Django CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run flake8
+        run: |
+          flake8 . --exclude=env,main_app/migrations,main_app/apps.py --count --select=E9,F63,F7,F82 --show-source --statistics --max-complexity=10 --max-line-length=127
+
+      - name: Run pylint
+        run: |
+          pylint main_app --ignore=env,migrations,main_app/apps.py --disable=C0111,C0115,C0116,R0903 --max-line-length=127 --load-plugins pylint_django
+
+  test:
+    runs-on: ubuntu-latest
+    needs: lint
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_DB: mydatabase
+          POSTGRES_USER: myuser
+          POSTGRES_PASSWORD: mypassword
+        ports:
+          - 5432:5432
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run database migrations
+        env:
+          DATABASE_URL: postgres://myuser:mypassword@localhost:5432/mydatabase
+          DATABASE_HOST: localhost
+          DATABASE_USER: myuser
+          DATABASE_PASSWORD: mypassword
+        run: |
+          python manage.py migrate
+
+      - name: Run tests
+        env:
+          DATABASE_URL: postgres://myuser:mypassword@localhost:5432/mydatabase
+          DATABASE_HOST: localhost
+          DATABASE_USER: myuser
+          DATABASE_PASSWORD: mypassword
+        run: |
+          python manage.py test
