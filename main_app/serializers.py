@@ -1,13 +1,25 @@
+from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from .models import Customer, Order
+
+User = get_user_model()  # Get the user model
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['username', 'password', 'email']
+        extra_kwargs = {'password': {'write_only': True}}
+
+    def create(self, validated_data):
+        user = User(**validated_data)
+        user.set_password(validated_data['password'])  # Hash the password
+        user.save()
+        return user
 
 
 class CustomerSerializer(serializers.ModelSerializer):
     """
     Serializer for the Customer model.
-
-    This class handles the conversion of Order objects to and from
-    JSON, as well as the validation of input data.
     """
 
     class Meta:
@@ -22,13 +34,9 @@ class CustomerSerializer(serializers.ModelSerializer):
         read_only_fields = ['id', 'timestamp']  # These fields cannot be modified directly
 
 
-
 class OrderSerializer(serializers.ModelSerializer):
     """
     Serializer for the Order model.
-
-    This class handles the conversion of Order objects to and from
-    JSON, as well as the validation of input data.
     """
 
     class Meta:

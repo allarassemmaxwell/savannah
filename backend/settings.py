@@ -13,8 +13,10 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+
 # Optionally, configure JWT settings like token lifespan
 from datetime import timedelta
+
 # Load environment variables from .env file
 load_dotenv()
 
