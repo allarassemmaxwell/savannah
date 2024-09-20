@@ -63,8 +63,8 @@ jobs:
         env:
           DATABASE_URL: postgres://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@localhost:5432/${{ secrets.POSTGRES_DB }}
           DATABASE_HOST: localhost
-          DATABASE_USER: ${{ secrets.POSTGRES_USER }}
-          DATABASE_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          DATABASE_USER: myuser
+          DATABASE_PASSWORD: mypassword
         run: |
           python manage.py migrate
 
@@ -72,8 +72,8 @@ jobs:
         env:
           DATABASE_URL: postgres://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@localhost:5432/${{ secrets.POSTGRES_DB }}
           DATABASE_HOST: localhost
-          DATABASE_USER: ${{ secrets.POSTGRES_USER }}
-          DATABASE_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          DATABASE_USER: myuser
+          DATABASE_PASSWORD: mypassword
           AFRICAS_TALKING_USERNAME: ${{ secrets.AFRICAS_TALKING_USERNAME }}
           AFRICAS_TALKING_API_KEY: ${{ secrets.AFRICAS_TALKING_API_KEY }}
         run: |
