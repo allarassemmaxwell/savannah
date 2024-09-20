@@ -61,19 +61,19 @@ jobs:
 
       - name: Run database migrations
         env:
-          DATABASE_URL: postgres://myuser:mypassword@localhost:5432/mydatabase
+          DATABASE_URL: postgres://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@localhost:5432/${{ secrets.POSTGRES_DB }}
           DATABASE_HOST: localhost
-          DATABASE_USER: myuser
-          DATABASE_PASSWORD: mypassword
+          DATABASE_USER: ${{ secrets.POSTGRES_USER }}
+          DATABASE_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
         run: |
           python manage.py migrate
 
       - name: Run tests
         env:
-          DATABASE_URL: postgres://myuser:mypassword@localhost:5432/mydatabase
+          DATABASE_URL: postgres://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@localhost:5432/${{ secrets.POSTGRES_DB }}
           DATABASE_HOST: localhost
-          DATABASE_USER: myuser
-          DATABASE_PASSWORD: mypassword
+          DATABASE_USER: ${{ secrets.POSTGRES_USER }}
+          DATABASE_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
           AFRICAS_TALKING_USERNAME: ${{ secrets.AFRICAS_TALKING_USERNAME }}
           AFRICAS_TALKING_API_KEY: ${{ secrets.AFRICAS_TALKING_API_KEY }}
         run: |
