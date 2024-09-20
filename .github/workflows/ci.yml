@@ -40,9 +40,9 @@ jobs:
       postgres:
         image: postgres:latest
         env:
-          POSTGRES_DB: mydatabase
-          POSTGRES_USER: myuser
-          POSTGRES_PASSWORD: mypassword
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
         ports:
           - 5432:5432
     steps:
@@ -63,8 +63,8 @@ jobs:
         env:
           DATABASE_URL: postgres://myuser:mypassword@localhost:5432/mydatabase
           DATABASE_HOST: localhost
-          DATABASE_USER: myuser
-          DATABASE_PASSWORD: mypassword
+          DATABASE_USER: ${{ secrets.DATABASE_USER }}
+          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
         run: |
           python manage.py migrate
 
@@ -72,8 +72,8 @@ jobs:
         env:
           DATABASE_URL: postgres://myuser:mypassword@localhost:5432/mydatabase
           DATABASE_HOST: localhost
-          DATABASE_USER: myuser
-          DATABASE_PASSWORD: mypassword
+          DATABASE_USER: ${{ secrets.DATABASE_USER }}
+          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
           AFRICAS_TALKING_USERNAME: ${{ secrets.AFRICAS_TALKING_USERNAME }}
           AFRICAS_TALKING_API_KEY: ${{ secrets.AFRICAS_TALKING_API_KEY }}
         run: |
