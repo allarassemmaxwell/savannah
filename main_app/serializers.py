@@ -1,3 +1,15 @@
+"""
+Serializers for the main_app models.
+
+This module defines serializers for User, Customer, and Order models,
+    converting complex data types and handling validation.
+
+- UserSerializer: Manages user creation with hashed passwords.
+- CustomerSerializer: Handles Customer model data, with read-only fields.
+- OrderSerializer: Manages Order model data, with specific fields read-only.
+"""
+
+
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from .models import Customer, Order

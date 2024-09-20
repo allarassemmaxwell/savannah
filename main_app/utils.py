@@ -1,3 +1,13 @@
+"""
+Utility functions for the MainApp Django application.
+
+This module contains helper functions for sending SMS notifications using the Africa's Talking SDK.
+
+- send_sms: Sends an SMS to the specified phone number with the provided message.
+    Handles specific and general exceptions, allowing the calling view to manage errors.
+"""
+
+
 import africastalking
 from django.conf import settings
 

@@ -74,5 +74,7 @@ jobs:
           DATABASE_HOST: localhost
           DATABASE_USER: myuser
           DATABASE_PASSWORD: mypassword
+          AFRICAS_TALKING_USERNAME: ${{ secrets.AFRICAS_TALKING_USERNAME }}
+          AFRICAS_TALKING_API_KEY: ${{ secrets.AFRICAS_TALKING_API_KEY }}
         run: |
           python manage.py test

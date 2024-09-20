@@ -1,6 +1,15 @@
 """
 URL configurations for the MainApp Django application.
+
+This module defines the URL patterns for the API endpoints,
+    facilitating the routing of requests to the appropriate views.
+
+- customer_view: Endpoint for managing customer data.
+- order_view: Endpoint for handling order transactions.
+- JWT token paths: Endpoints for obtaining and refreshing JWT tokens for authentication.
+- SignUpView: Endpoint for user registration.
 """
+
 
 from django.urls import path
 from rest_framework_simplejwt.views import (

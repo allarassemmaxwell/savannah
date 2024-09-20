@@ -1,3 +1,14 @@
+"""
+Signal handlers for the MainApp Django application.
+
+This module defines signals that are triggered during specific model events, such as saving an Order.
+It includes functionality for generating unique slugs for Order instances before they are saved.
+
+- create_slug: A helper function that generates a unique slug based on a specified field and checks for existing slugs.
+- presave_order: A signal handler that sets a unique slug for Order instances before saving them to the database.
+"""
+
+
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.utils.text import slugify

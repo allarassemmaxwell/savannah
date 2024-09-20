@@ -1,3 +1,13 @@
+"""
+Models for the main_app application.
+
+This module defines the Customer and Order models, which store information about customers and their orders.
+
+- Customer: Represents a customer with attributes like name, unique code, and status.
+- Order: Represents an order with details such as the associated customer, item, amount, and status.
+"""
+
+
 from django.db import models
 
 class Customer(models.Model):

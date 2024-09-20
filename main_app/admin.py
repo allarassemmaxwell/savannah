@@ -1,6 +1,15 @@
 """
 Admin configuration for the main_app models.
+
+This module defines the admin interface for the Customer and Order models,
+    customizing their appearance and functionality in the Django admin site.
+
+- CustomerAdmin: Configures the admin interface for the Customer model,
+    including list display, filters, and search fields.
+- OrderAdmin: Configures the admin interface for the Order model, with
+    similar customization for list display and filtering.
 """
+
 
 from django.contrib import admin
 from .models import (
