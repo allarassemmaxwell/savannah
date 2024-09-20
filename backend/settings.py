@@ -13,7 +13,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 from pathlib import Path
 from dotenv import load_dotenv
-
+# Optionally, configure JWT settings like token lifespan
+from datetime import timedelta
 # Load environment variables from .env file
 load_dotenv()
 
@@ -44,6 +45,7 @@ INSTALLED_APPS = [
     'main_app',
     'rest_framework',  # pip install djangorestframework
     'corsheaders',  # pip install django-cors-headers
+    'rest_framework_simplejwt', # pip install djangorestframework-simplejwt
 ]
 
 MIDDLEWARE = [
@@ -135,6 +137,21 @@ CORS_ALLOWED_ORIGINS = [
 # Optional: Allow credentials for CORS
 CORS_ALLOW_CREDENTIALS = True
 
+# REST Framework settings for JWT authentication
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+}
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
@@ -144,6 +161,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # Media files (Uploaded files)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+AFRICAS_TALKING_USERNAME = str(os.getenv('AFRICAS_TALKING_USERNAME'))
+AFRICAS_TALKING_API_KEY = str(os.getenv('AFRICAS_TALKING_API_KEY'))
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
