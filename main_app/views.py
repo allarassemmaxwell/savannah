@@ -1,6 +1,15 @@
 """
 View functions for the MainApp Django application.
+
+This module contains the views that handle requests related to customers and orders.
+It includes functionality for user registration and SMS notifications upon order creation.
+
+- SignUpView: Allows users to register using the UserSerializer.
+- customer_view: Handles POST requests for creating customers, returning validation errors as needed.
+- order_view: Manages order creation, sends an SMS notification to the customer upon success,
+    and handles errors appropriately.
 """
+
 
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
