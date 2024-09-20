@@ -61,7 +61,7 @@ jobs:
 
       - name: Run database migrations
         env:
-          DATABASE_URL: postgres://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@localhost:5432/${{ secrets.POSTGRES_DB }}
+          DATABASE_URL: postgres://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@db:5432/${{ secrets.POSTGRES_DB }}
           DATABASE_HOST: localhost
           DATABASE_USER: ${{ secrets.POSTGRES_USER }}
           DATABASE_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
@@ -70,7 +70,7 @@ jobs:
 
       - name: Run tests
         env:
-          DATABASE_URL: postgres://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@localhost:5432/${{ secrets.POSTGRES_DB }}
+          DATABASE_URL: postgres://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@db:5432/${{ secrets.POSTGRES_DB }}
           DATABASE_HOST: localhost
           DATABASE_USER: ${{ secrets.POSTGRES_USER }}
           DATABASE_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
