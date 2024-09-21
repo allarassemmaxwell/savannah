@@ -72,8 +72,8 @@ jobs:
             POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
             POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
             POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-            DATABASE_HOST: localhost
-            DATABASE_PORT: '5432'
+            DATABASE_HOST: ${{ secrets.DATABASE_TEST_HOST }}
+            DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
           run: |
             python manage.py migrate
 
@@ -82,8 +82,8 @@ jobs:
             POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
             POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
             POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-            DATABASE_HOST: localhost
-            DATABASE_PORT: '5432'
+            DATABASE_HOST: ${{ secrets.DATABASE_TEST_HOST }}
+            DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
             AFRICAS_TALKING_USERNAME: ${{ secrets.AFRICAS_TALKING_USERNAME }}
             AFRICAS_TALKING_API_KEY: ${{ secrets.AFRICAS_TALKING_API_KEY }}
           run: |
