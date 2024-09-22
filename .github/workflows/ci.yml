@@ -18,7 +18,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
-          python-version: '3.11'
+          python-version: '3.9'  # Changed to Python 3.9
 
       - name: Install dependencies
         run: |
@@ -53,7 +53,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
-          python-version: '3.11'
+          python-version: '3.9'  # Changed to Python 3.9
 
       - name: Install dependencies
         run: |
@@ -99,7 +99,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
-          python-version: '3.11'
+          python-version: '3.9'  # Changed to Python 3.9
 
       - name: Install dependencies
         run: |
@@ -119,5 +119,5 @@ jobs:
 
       - name: Deploy to Elastic Beanstalk
         run: |
-          eb init -p "64bit Amazon Linux 2023 v4.1.4 running Python 3.11" ${{ secrets.AWS_APPLICATION_NAME }} --region ${{ secrets.AWS_REGION }}
+          eb init -p "64bit Amazon Linux 2023 v4.1.4 running Python 3.9" ${{ secrets.AWS_APPLICATION_NAME }} --region ${{ secrets.AWS_REGION }}
           eb deploy ${{ secrets.AWS_ENVIRONMENT_NAME }}
