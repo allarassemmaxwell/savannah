@@ -136,4 +136,4 @@ jobs:
       - name: Deploy to Elastic Beanstalk
         run: |
           eb init -p "64bit Amazon Linux 2023 v4.1.4 running Python 3.11" ${{ secrets.AWS_APPLICATION_NAME }} --region ${{ secrets.AWS_REGION }}
-          eb deploy --debug ${{ secrets.AWS_ENVIRONMENT_NAME }}
+          eb deploy ${{ secrets.AWS_ENVIRONMENT_NAME }}

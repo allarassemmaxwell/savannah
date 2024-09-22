@@ -102,3 +102,6 @@ ENV/
 
 # terraform
 terraform/terraform.tfvars
+
+# ebextensions
+.ebextensions/
