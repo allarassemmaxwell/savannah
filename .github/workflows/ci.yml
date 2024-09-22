@@ -126,7 +126,7 @@ jobs:
 
       - name: Deploy to Elastic Beanstalk
         run: |
-          eb init -p python-3.10 your-app-name --region ${{ secrets.AWS_REGION }}
+          eb init -p python-3.10 ${{ secrets.AWS_APPLICATION_NAME }} --region ${{ secrets.AWS_REGION }}
           eb setenv \
             POSTGRES_DB=${{ secrets.POSTGRES_DB }} \
             POSTGRES_USER=${{ secrets.POSTGRES_USER }} \
@@ -136,4 +136,4 @@ jobs:
             STATIC_URL=/static/ \
             MEDIA_URL=/media/ \
             AWS_REGION=${{ secrets.AWS_REGION }}
-          eb deploy your-environment-name
+          eb deploy ${{ secrets.AWS_ENVIRONMENT_NAME }}
