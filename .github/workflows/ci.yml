@@ -88,7 +88,7 @@ jobs:
             AFRICAS_TALKING_API_KEY: ${{ secrets.AFRICAS_TALKING_API_KEY }}
           run: |
             python manage.py test
-
+  
   deploy:
     runs-on: ubuntu-latest
     needs: test
@@ -116,6 +116,14 @@ jobs:
       - name: Install EB CLI
         run: |
           pip install awsebcli
+
+      - name: Set up environment variables for database
+        run: |
+          eb setenv POSTGRES_DB=${{ secrets.POSTGRES_DB }} \
+                    POSTGRES_USER=${{ secrets.POSTGRES_USER }} \
+                    POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} \
+                    DATABASE_HOST=${{ secrets.DATABASE_HOST }} \
+                    DATABASE_PORT=${{ secrets.DATABASE_PORT }}
 
       - name: Deploy to Elastic Beanstalk
         run: |
