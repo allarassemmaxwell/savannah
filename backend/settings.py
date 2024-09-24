@@ -34,7 +34,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # Debug mode
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['http://savannah-env.eba-xszeadp3.us-east-1.elasticbeanstalk.com']
 
 
 # Application definition
