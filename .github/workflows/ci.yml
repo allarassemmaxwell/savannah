@@ -88,7 +88,7 @@ jobs:
             AFRICAS_TALKING_API_KEY: ${{ secrets.AFRICAS_TALKING_API_KEY }}
           run: |
             python manage.py test
-  
+
   deploy:
     runs-on: ubuntu-latest
     needs: test
@@ -117,6 +117,13 @@ jobs:
         run: |
           pip install awsebcli
 
+      # Initialize Elastic Beanstalk environment
+      - name: Initialize Elastic Beanstalk (EB CLI)
+        run: |
+          eb init -p "64bit Amazon Linux 2023 v4.1.4 running Python 3.11" ${{ secrets.AWS_APPLICATION_NAME }} \
+          --region ${{ secrets.AWS_REGION }}
+
+      # Set environment variables after initialization
       - name: Set up environment variables for database
         run: |
           eb setenv POSTGRES_DB=${{ secrets.POSTGRES_DB }} \
@@ -125,7 +132,7 @@ jobs:
                     DATABASE_HOST=${{ secrets.DATABASE_HOST }} \
                     DATABASE_PORT=${{ secrets.DATABASE_PORT }}
 
+      # Deploy to Elastic Beanstalk
       - name: Deploy to Elastic Beanstalk
         run: |
-          eb init -p "64bit Amazon Linux 2023 v4.1.4 running Python 3.11" ${{ secrets.AWS_APPLICATION_NAME }} --region ${{ secrets.AWS_REGION }}
           eb deploy ${{ secrets.AWS_ENVIRONMENT_NAME }}

@@ -160,11 +160,11 @@ SIMPLE_JWT = {
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# Media files (Uploaded files)
 MEDIA_URL = '/media/'
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
-
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 AFRICAS_TALKING_USERNAME = str(os.getenv('AFRICAS_TALKING_USERNAME'))
 AFRICAS_TALKING_API_KEY = str(os.getenv('AFRICAS_TALKING_API_KEY'))
