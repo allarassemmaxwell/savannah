@@ -3,7 +3,7 @@
     "containerDefinitions": [
       {
         "name": "web",
-        "image": "your_image_name",  // Will be built from Dockerfile
+        "image": "your_image_name",
         "essential": true,
         "memory": 512,
         "portMappings": [
@@ -18,8 +18,6 @@
         "image": "postgres:13",
         "essential": true,
         "memory": 512
-        // No environment variables for db
       }
     ]
   }
-  
