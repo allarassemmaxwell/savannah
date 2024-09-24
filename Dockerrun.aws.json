@@ -1,0 +1,25 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+      {
+        "name": "web",
+        "image": "your_image_name",  // Will be built from Dockerfile
+        "essential": true,
+        "memory": 512,
+        "portMappings": [
+          {
+            "hostPort": 80,
+            "containerPort": 8000
+          }
+        ]
+      },
+      {
+        "name": "db",
+        "image": "postgres:13",
+        "essential": true,
+        "memory": 512
+        // No environment variables for db
+      }
+    ]
+  }
+  
