@@ -137,11 +137,3 @@ jobs:
       - name: Deploy to Elastic Beanstalk
         run: |
           eb deploy ${{ secrets.AWS_ENVIRONMENT_NAME }} --staged --timeout 30
-
-      # - name: Run migrations
-      #   env:
-      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      #     AWS_REGION: ${{ secrets.AWS_REGION }}
-      #   run: |
-      #     eb ssh ${{ secrets.AWS_ENVIRONMENT_NAME }} --command "docker exec web python manage.py makemigrations && docker exec web python manage.py migrate"
