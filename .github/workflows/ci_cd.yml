@@ -133,6 +133,11 @@ jobs:
         run: |
           eb deploy ${{ secrets.AWS_ENVIRONMENT_NAME }}
 
+      # Set up SSH for Elastic Beanstalk (Important!)
+      - name: Set up SSH for Elastic Beanstalk
+        run: |
+          eb ssh --setup
+
       # Run migrations on production DB (optional step)
       - name: Run migrations on production DB
         run: |
