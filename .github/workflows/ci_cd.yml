@@ -128,6 +128,13 @@ jobs:
         run: |
           python manage.py collectstatic --noinput
 
+     # Run migrations
+      - name: Setup SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.AWS_SSH_KEY }}" > ~/.ssh/savannah-key.pem
+          chmod 600 ~/.ssh/savannah-key.pem  # Set permissions for the private key
+
       # Run migrations
       - name: Run migrations
         run: |
