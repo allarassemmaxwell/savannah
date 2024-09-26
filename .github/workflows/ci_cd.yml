@@ -123,12 +123,17 @@ jobs:
           eb init -p "64bit Amazon Linux 2023 v4.1.4 running Python 3.11" ${{ secrets.AWS_APPLICATION_NAME }} \
           --region ${{ secrets.AWS_REGION }}
 
+      # Collect static files
+      - name: Collect static files
+        run: |
+          python manage.py collectstatic --noinput
+
       # Deploy to Elastic Beanstalk
       - name: Deploy to Elastic Beanstalk
         run: |
           eb deploy ${{ secrets.AWS_ENVIRONMENT_NAME }}
 
-      # Run database migrations
-      - name: Run makemigrations and migrate
+      # Run migrations on production DB (optional step)
+      - name: Run migrations on production DB
         run: |
           eb ssh ${{ secrets.AWS_ENVIRONMENT_NAME }} --command "source /var/app/venv/*/bin/activate && python manage.py makemigrations && python manage.py migrate"
