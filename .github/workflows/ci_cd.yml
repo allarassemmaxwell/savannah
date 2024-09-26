@@ -131,9 +131,4 @@ jobs:
       # Deploy to Elastic Beanstalk
       - name: Deploy to Elastic Beanstalk
         run: |
-          eb deploy ${{ secrets.AWS_ENVIRONMENT_NAME }}
-
-     # Run migrations on production DB using hooks (post-deploy)
-      - name: Run migrations on production DB
-        run: |
-          eb run "python manage.py makemigrations && python manage.py migrate" --environment ${{ secrets.AWS_ENVIRONMENT_NAME }}
+          eb deploy ${{ secrets.AWS_ENVIRONMENT_NAME }} --staged --timeout 30
