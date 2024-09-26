@@ -131,7 +131,7 @@ jobs:
        # Run migrations
       - name: Run migrations
         run: |
-          eb ssh ${{ secrets.AWS_ENVIRONMENT_NAME }} --command "docker exec web python manage.py makemigrations && docker exec web python manage.py migrate"
+          eb ssh ${{ secrets.AWS_ENVIRONMENT_NAME }} --command "docker compose exec web python manage.py makemigrations && docker compose exec web python manage.py migrate"
 
       # Deploy to Elastic Beanstalk
       - name: Deploy to Elastic Beanstalk
