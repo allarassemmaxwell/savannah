@@ -17,6 +17,7 @@ from rest_framework.exceptions import APIException
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework import status, generics
 from django.contrib.auth import get_user_model
+from django.shortcuts import render
 
 # Import your serializers and utility functions at the top
 from .serializers import (
@@ -27,6 +28,15 @@ from .serializers import (
 from .utils import send_sms  # Import the SMS utility function
 
 User = get_user_model()  # Get the user model
+
+
+def home_view(request):
+    """
+    Handle index/home view.
+    """
+    context  = {}
+    template = "index.html"
+    return render(request, template, context)
 
 
 class SignUpView(generics.CreateAPIView):
