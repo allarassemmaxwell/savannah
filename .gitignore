@@ -102,3 +102,11 @@ ENV/
 
 # terraform
 terraform/terraform.tfvars
+
+# ebextensions
+.ebextensions/
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
