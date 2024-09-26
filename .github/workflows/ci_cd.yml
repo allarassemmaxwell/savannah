@@ -133,12 +133,7 @@ jobs:
         run: |
           eb deploy ${{ secrets.AWS_ENVIRONMENT_NAME }}
 
-      # Set up SSH for Elastic Beanstalk (Important!)
-      - name: Set up SSH for Elastic Beanstalk
-        run: |
-          eb ssh --setup
-
-      # Run migrations on production DB (optional step)
+     # Run migrations on production DB using hooks (post-deploy)
       - name: Run migrations on production DB
         run: |
-          eb ssh ${{ secrets.AWS_ENVIRONMENT_NAME }} --command "source /var/app/venv/*/bin/activate && python manage.py makemigrations && python manage.py migrate"
+          eb run "python manage.py makemigrations && python manage.py migrate" --environment ${{ secrets.AWS_ENVIRONMENT_NAME }}
