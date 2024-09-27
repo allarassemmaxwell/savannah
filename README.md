@@ -1,6 +1,8 @@
 # Savannah
 
-[![GitHub Repo](https://img.shields.io/badge/GitHub-Repo-blue?style=flat&logo=github)](https://github.com/allarassemmaxwell/savannah/tree/main)
+
+### Build Status
+![Build Status](https://github.com/allarassemmaxwell/savannah/actions/workflows/ci_cd.yml/badge.svg)
 
 
 ## Overview
