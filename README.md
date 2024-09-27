@@ -54,13 +54,10 @@ SECRET_KEY=your_secret_key
 POSTGRES_DB=your_db_name
 POSTGRES_USER=your_db_user
 POSTGRES_PASSWORD=your_db_password
+DATABASE_HOST=your_host_db
+DATABASE_PORT=your db_port
 AFRICAS_TALKING_USERNAME=your_africas_talking_username
 AFRICAS_TALKING_API_KEY=your_africas_talking_api_key
-AWS_ACCESS_KEY_ID=your_aws_access_key
-AWS_SECRET_ACCESS_KEY=your_aws_secret_access_key
-AWS_APPLICATION_NAME=your_application_name
-AWS_ENVIRONMENT_NAME=your_environment_name
-AWS_REGION=your_aws_region
 ```
 
 ## Build and Run the Application
