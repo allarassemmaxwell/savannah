@@ -61,6 +61,7 @@ AWS_SECRET_ACCESS_KEY=your_aws_secret_access_key
 AWS_APPLICATION_NAME=your_application_name
 AWS_ENVIRONMENT_NAME=your_environment_name
 AWS_REGION=your_aws_region
+```
 
 ## Build and Run the Application
 
@@ -69,6 +70,7 @@ Build the Docker containers:
 ```bash
 docker-compose build
 docker-compose up
+```
 
 ## Create a Superuser
 
@@ -76,7 +78,7 @@ To create an admin user, run the following command:
 
 ```bash
 docker-compose exec web python manage.py createsuperuser
-
+```
 
 ## API Endpoints
 
@@ -92,7 +94,7 @@ To run the tests, use the following command:
 
 ```bash
 docker-compose exec web python manage.py test
-
+```
 
 ## CI/CD with GitHub Actions
 
