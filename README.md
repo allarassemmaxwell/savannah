@@ -49,7 +49,7 @@ cd savannah
 
 Create a `.env` file in the root directory of your project and define the following environment variables:
 
-```plaintext
+```bash
 SECRET_KEY=your_secret_key
 POSTGRES_DB=your_db_name
 POSTGRES_USER=your_db_user
@@ -98,7 +98,10 @@ docker-compose exec web python manage.py test
 
 ## CI/CD with GitHub Actions
 
-This project includes a CI/CD setup using GitHub Actions. Linting and testing are performed on every push and pull request to the main branch. Ensure that your `.github/workflows/ci_cd.yml` file is configured to include your linting and testing steps.
+This project includes a CI/CD setup using GitHub Actions. Linting and testing are performed on every push and pull request to the main branch. Additionally, the application is automatically deployed to AWS Elastic Beanstalk upon successful tests. Ensure that your `.github/workflows/ci_cd.yml` file is configured to include your linting, testing, and deployment steps.
+
+The application can be accessed at the following URL: [http://savanah.us-east-1.elasticbeanstalk.com](http://savanah.us-east-1.elasticbeanstalk.com).
+
 
 ## License
 
