@@ -88,12 +88,12 @@ docker compose exec web python manage.py createsuperuser
 - `POST /api/customers/` - Create a new customer.
 - `POST /api/orders/` - Place a new order.
 
-## Running Tests
+## Running Tests With Coverage
 
-To run the tests, use the following command:
+To run the tests with coverage, use the following command:
 
 ```bash
-docker compose exec web python manage.py test
+docker compose exec web coverage run manage.py test
 ```
 
 ## CI/CD with GitHub Actions
