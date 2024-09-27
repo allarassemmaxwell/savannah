@@ -68,8 +68,8 @@ AWS_REGION=your_aws_region
 Build the Docker containers:
 
 ```bash
-docker-compose build
-docker-compose up
+docker compose build
+docker compose up
 ```
 
 ## Create a Superuser
@@ -77,7 +77,7 @@ docker-compose up
 To create an admin user, run the following command:
 
 ```bash
-docker-compose exec web python manage.py createsuperuser
+docker compose exec web python manage.py createsuperuser
 ```
 
 ## API Endpoints
@@ -93,7 +93,7 @@ docker-compose exec web python manage.py createsuperuser
 To run the tests, use the following command:
 
 ```bash
-docker-compose exec web python manage.py test
+docker compose exec web python manage.py test
 ```
 
 ## CI/CD with GitHub Actions
